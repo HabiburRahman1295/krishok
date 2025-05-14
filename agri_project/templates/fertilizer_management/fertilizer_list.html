@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>সার ব্যবস্থাপনা</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h2 class="mb-4">🌾 সার ব্যবস্থাপনার তথ্য</h2>
+    <table class="table table-bordered bg-white">
+        <thead>
+            <tr>
+                <th>সারের নাম</th>
+                <th>ফসলের ধরন</th>
+                <th>প্রয়োগ সময়</th>
+                <th>পরিমাণ</th>
+                <th>পরামর্শ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fert in fertilizers %}
+            <tr>
+                <td>{{ fert.name }}</td>
+                <td>{{ fert.crop_type }}</td>
+                <td>{{ fert.usage_time }}</td>
+                <td>{{ fert.dosage }}</td>
+                <td>{{ fert.recommendation }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-danger">কোন সার পাওয়া যায়নি।</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

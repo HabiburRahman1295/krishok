@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI কৃষি পোর্টাল</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      
+      background-color:rgba(238, 241, 239, 0.86);
+      font-family: 'Helvetica', sans-serif;
+    }
+    .hero {
+      background: url("{% static 'img/dragonfruit.jpg' %}") no-repeat center center;
+      background-size: cover;
+      color: white;
+      padding: 80px 0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
+    .feature-box {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🔝 Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/">🌾 কৃষি পোর্টাল</a>
+
+    <!-- 🔍 Search -->
+    <form class="d-flex me-3" role="search" action="/search/" method="get">
+      <input class="form-control form-control-sm me-2" type="search" name="q" placeholder="🔍 খুঁজুন" aria-label="Search">
+    </form>
+
+    <!-- ✅ Login / Signup / Dashboard / Logout Toggle -->
+    <div class="ms-auto">
+      {% if user.is_authenticated %}
+        <a class="btn btn-light btn-sm me-2" href="/dashboard/">📊 Dashboard</a>
+        <a class="btn btn-outline-light btn-sm me-2" href="/accounts/profile/">🙍‍♂️ প্রোফাইল</a>
+        <a class="btn btn-outline-light btn-sm" href="/logout/">Logout</a>
+      {% else %}
+        <a class="btn btn-light btn-sm me-2" href="/login/">Login</a>
+        <a class="btn btn-outline-light btn-sm" href="/signup/">Sign Up</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+
+<!-- 🎉 Hero Section -->
+<section class="hero text-center">
+  <div class="container">
+    <h1 class="display-5 fw-bold">স্বাগতম AI কৃষি পোর্টালে</h1>
+    <p class="lead">ডিজিটাল কৃষির দিকে এক ধাপ এগিয়ে চলুন</p>
+    {% if not user.is_authenticated %}
+      <a href="/signup/" class="btn btn-warning btn-lg mt-3">📝 শুরু করুন</a>
+    {% endif %}
+  </div>
+</section>
+
+<!-- 📢 Notice Section -->
+<section class="container my-4">
+  <div class="alert alert-warning shadow-sm">
+    📢 <strong>নোটিশ:</strong> আগাম ধান কাটা শুরু হচ্ছে আগামী সপ্তাহ থেকে! ফসল ব্যবস্থাপনায় সতর্ক থাকুন।
+    <a href="/notice/" class="btn btn-sm btn-outline-dark float-end">সব নোটিশ</a>
+  </div>
+</section>
+
+<!-- 🌾 Crop Showcase Section -->
+<section class="container my-5">
+  <h4 class="text-center mb-4 fw-bold text-success">🌾 জনপ্রিয় ফসল</h4>
+  <div class="row g-4">
+
+    <!-- ধান -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <img src="{% static 'img/dhan.jpg' %}" class="card-img-top" alt="ধান">
+        <div class="card-body">
+          <h5 class="card-title">ধান</h5>
+          <p class="card-text text-muted">বাংলাদেশের প্রধান খাদ্যশস্য, কৃষকের মূল আয়ের উৎস। উর্বর জমিতে বেশি ফলন হয়।</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- গম -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <img src="{% static 'img/gom.jpg' %}" class="card-img-top" alt="গম">
+        <div class="card-body">
+          <h5 class="card-title">গম</h5>
+          <p class="card-text text-muted">শীতকালীন ফসল, রুটি ও আটার জন্য ব্যবহৃত হয়। উচ্চ প্রোটিন যুক্ত এবং কম পানিতে উৎপাদন সম্ভব।</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- পটল -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <img src="{% static 'img/potol.jpg' %}" class="card-img-top" alt="পটল">
+        <div class="card-body">
+          <h5 class="card-title">পটল</h5>
+          <p class="card-text text-muted">পটল একটি জনপ্রিয় গ্রীষ্মকালীন সবজি, এটি প্রচুর ভিটামিন A ও C সরবরাহ করে।</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <img src="{% static 'img/mango.jpg' %}" class="card-img-top" alt="পটল">
+        <div class="card-body">
+          <h5 class="card-title">আম</h5>
+          <p class="card-text text-muted">কাঁচা আম খাওয়ার উপকারিতা
+শরীরকে শীতল রাখে গরমকালে শরীরের অতিরিক্ত তাপ কমাতে কাঁচা আম দারুণ কার্যকর।</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+<!-- 🌐 Footer -->
+<footer class="mt-5 bg-white border-top pt-4">
+  <div class="container text-center">
+
+    <div class="row">
+      <!-- লিংক -->
+      <div class="col-md-4 mb-3">
+        <h6 class="text-success fw-bold">নেভিগেশন</h6>
+        <ul class="list-unstyled">
+          <li><a href="/crops/" class="text-dark text-decoration-none">ফসল</a></li>
+          <li><a href="/products/" class="text-dark text-decoration-none">প্রছন্ন</a></li>
+          <li><a href="/weather/" class="text-dark text-decoration-none">আবহাওয়া</a></li>
+          <li><a href="/advice/forum/" class="text-dark text-decoration-none">পরামর্শ</a></li>
+        </ul>
+      </div>
+
+      <!-- যোগাযোগ -->
+      <div class="col-md-4 mb-3">
+        <h6 class="text-success fw-bold">সামাজিক যোগাযোগ</h6>
+        <ul class="list-unstyled">
+          <li><a href="https://facebook.com" target="_blank" class="text-primary text-decoration-none">📘 Follow Us on Facebook</a></li>
+          <li><a href="https://twitter.com" target="_blank" class="text-info text-decoration-none">🐦 Follow Us on Twitter</a></li>
+        </ul>
+        <div class="mt-2">
+          <strong>📞 সহজ নম্বর: ৩৩৩১</strong>
+        </div>
+      </div>
+
+      <!-- সহযোগিতা -->
+      <div class="col-md-4 mb-3">
+        <h6 class="text-success fw-bold">সহযোগিতায়</h6>
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+          <img src="{% static 'img/logo_krishi.png' %}" alt="কৃষি মন্ত্রণালয়" height="40">
+          <img src="{% static 'img/logo_dae.png' %}" alt="DAE" height="40">
+          <img src="{% static 'img/logo_softbd.png' %}" alt="SoftBD" height="40">
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <p class="text-center small text-muted mb-0">© সর্বস্বত্ব সংরক্ষিত - AI কৃষি পোর্টাল</p>
+  </div>
+</footer>
+
+</html>
